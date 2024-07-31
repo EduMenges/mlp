@@ -1,0 +1,15 @@
+---
+BasedOnStyle: Google
+AccessModifierOffset: -2
+AlignAfterOpenBracket: BlockIndent
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+BinPackArguments: false
+BinPackParameters: false
+BreakStringLiterals: false
+ColumnLimit: 100
+IndentWidth: 4
+InsertNewlineAtEOF: true
+InsertTrailingCommas: Wrapped
+SeparateDefinitionBlocks: Always
+TabWidth: 4
