@@ -1,6 +1,6 @@
 #pragma once
 
-#include "exercicio1/Pessoa.hpp"
+#include "catp1/Pessoa.hpp"
 
 /**
 5) Na classe Aluno, inclua um atributo para representar a data de matrícula e
@@ -13,24 +13,22 @@ Para tanto, você pode usar qualquer mecanismo.
 */
 class Aluno : public Pessoa {
   public:
-    enum NIVEL { INDEFINIDO, GRADUACAO, ESPECIALIZACAO, MESTRADO, DOUTORADO };
+    enum Nivel { INDEFINIDO, GRADUACAO, ESPECIALIZACAO, MESTRADO, DOUTORADO };
 
     Aluno(
-        std::string = "INDEFINIDO",
-        DataEHora = time(0),
-        GENERO = Pessoa::INDEFINIDO,
-        NIVEL = INDEFINIDO,
-        std::string = "INDEFINIDO"
-    ) {
-        this->set_nome(nome);
-        this->set_dt_nascimento(dt_nascimento);
-        this->set_genero(genero);
+        std::string nome = "INDEFINIDO",
+        DataEHora dt_nasicmento = time(0),
+        Genero genero = Pessoa::INDEFINIDO,
+        Nivel nivel = INDEFINIDO,
+        std::string matricula = "INDEFINIDO"
+    )
+        : Pessoa(nome, dt_nasicmento, genero) {
         this->set_nivel(nivel);
         this->set_matricula(matricula);
         std::cout << "> [Aluno] Construtor chamado." << std::endl;
     }
 
-    void set_nivel(NIVEL nivel) { this->nivel = nivel; }
+    constexpr void set_nivel(Nivel nivel) { this->nivel = nivel; }
 
     void set_matricula(std::string matricula) {
         if (matricula.length() != 8) {
@@ -43,7 +41,7 @@ class Aluno : public Pessoa {
             }
         }
 
-        this->matricula = matricula;
+        this->matricula = std::move(matricula);
     }
 
     void set_dt_matricula(DataEHora dt_matricula) {
@@ -52,7 +50,7 @@ class Aluno : public Pessoa {
         const auto chrono_matricula =
             std::chrono::system_clock::from_time_t(dt_matricula.epoch_time);
 
-        if (chrono_nascimento > chrono_matricula) {
+        if (chrono_matricula < chrono_nascimento) {
             throw std::invalid_argument(
                 "A data de matrícula não pode ser menor do que a data de nascimento!"
             );
@@ -62,7 +60,7 @@ class Aluno : public Pessoa {
     }
 
   private:
-    NIVEL nivel;
+    Nivel nivel;
     std::string matricula;
     time_t dt_matricula;
 };

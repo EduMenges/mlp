@@ -1,7 +1,7 @@
 #include "Pessoa.hpp"
 
 // sobrecarga do operator<< para atuar com Pessoa::Genero
-std::ostream &operator<<(std::ostream &os, const Pessoa::GENERO g) {
+std::ostream &operator<<(std::ostream &os, Pessoa::Genero g) {
     switch (g) {
         case Pessoa::INDEFINIDO:
             os << "INDEFINIDO";
@@ -15,8 +15,8 @@ std::ostream &operator<<(std::ostream &os, const Pessoa::GENERO g) {
         case Pessoa::NAO_BINARIO:
             os << "NAO_BINARIO";
             break;
-        case Pessoa::TRANSGENERO:
-            os << "TRANSGENERO";
+        case Pessoa::TRANSGenero:
+            os << "TRANSGenero";
             break;
         default:
             os.setstate(std::ios_base::failbit);

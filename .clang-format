@@ -11,5 +11,6 @@ ColumnLimit: 100
 IndentWidth: 4
 InsertNewlineAtEOF: true
 InsertTrailingCommas: Wrapped
+PackConstructorInitializers: CurrentLine
 SeparateDefinitionBlocks: Always
 TabWidth: 4

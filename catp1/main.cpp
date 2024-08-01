@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
 
-#include "exercicio1/Pessoa.hpp"
+#include "catp1/Pessoa.hpp"
 
 // 4) Prove que o código seguinte faz coisas diferentes. Modifique o código da
 // classe, se necessário:
 
 int main() {
     Pessoa p("Tomas Turbando");
+    Pessoa& foo = p;
 
     Pessoa p2 = p;
     p2.set_nome("Seuku Myadora");
